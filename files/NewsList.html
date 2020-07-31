@@ -1,0 +1,50 @@
+    <div class="container" style="background-color:#fff;box-shadow:1px 2px 10px #888888; background-color:#fff;">
+        <div class="page-header">
+            <h1>{{lHeader}} <small ng-if="lHeader == 'News'">and other interesting things</small></h1><div class="col-xs-12" style="margin-top: 20px;"><input type="input" ng-model="fSearch" placeholder="search"> {{results.length}} results found</div>
+            <div class="col-xs-6 col-sm-2" style="margin: 10px 0px;"><select id="NumItem" class="form-control" ng-model="NumItem"><!-- ng-init="EventFilt.fOrder=order"-->
+                <option value="10">10</option><!--*-->
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>                 
+            </select></div>
+            <div class="col-xs-6 col-sm-3" style="margin: 10px 0px;"><select id="Order" class="form-control" ng-model="Order"><!-- ng-init="EventFilt.fOrder=order"-->
+                <!--<option value="">--Order By--</option>--><!--*-->
+                <option value="-v_idNews">Newest</option>
+                <option value="v_News">Oldest</option>
+                <option value="v_Title">A-Z</option>
+                <option value="-v_Title">Z-A</option>
+                <!--<option value="">--None--</option>--><!--None-->                   
+            </select></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <tr dir-paginate="x in data|filter: fSearch|filter: ImageClass|orderBy: Order|itemsPerPage:NumItem|filter: fSearch as results">
+                    <td style="margin-left:0px; padding-left:0px; margin-right:0px; padding-right:0px">
+                        <div class="col-lg-12 col-md-12" style="box-shadow:1px 2px 10px #888888;background-color:#fff;">
+                            <div class="media">
+                                <div class="media-left">
+                                    <a><img ng-src="./assets/img/Thumb/News/{{x.v_Title}}.jpg" style="max-height: 150px"></a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="col-xs-11">{{x.v_Title}}</h4>
+                                    <div class="text-right">
+                                        <a ng-if="showDelete" ng-click="remove_Inbox(); resetButton();" class="glyphicon glyphicon-remove"></a>
+                                    </div>
+                                    <p class="col-xs-12">{{x.v_Article|PlainRes|words:30}} <a href="#/NewsBlog/{{x.v_idNews}}">...Read More</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <div class="col-xs-4"></div>
+            <dir-pagination-controls max-size="Col" direction-links="true" boundary-links="true" class="col-xs-8"></dir-pagination-controls>
+        </div>
+    </div>
+
+ <!--<div dir-paginate="n in array_List|filter: fSearch|orderBy: Order|itemsPerPage:NumItem">
+                        <span>{{n.item}}</span>
+                    </div>
+<dir-pagination-controls max-size="Col" direction-links="true" boundary-links="true"></dir-pagination-controls>-->

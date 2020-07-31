@@ -1,0 +1,76 @@
+<div style="margin-top: 100px; margin-bottom: 200px;">
+    <div class="container">
+        <ng-form id="nLogin" name="nLogin" action="" novalidate>
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <label>Username: <input type="text" ng-model="nLogin.nUName" id="Name" name="Name" /></label>
+                </div>
+                <div class="col-md-12">
+                    <label>First Name: <input type="text" ng-model="nLogin.nFName" id="Name" name="Name" /></label>
+                </div>
+                <div class="col-md-12">
+                    <label>Last Name: <input type="text" ng-model="nLogin.nLName" id="Name" name="Name" /></label>
+                </div>
+                <div class="col-md-12">
+                    <label>Email: </label>
+                    <input type="text" ng-model="nLogin.nEmail" id="nuEmail" name="nuEmail" />
+                </div>
+                <div class="col-md-12">
+                    <label>Password: </label>
+                    <input type="password" ng-model="nLogin.nPass" id="nuPass" name="nuPass" /><i class="glyphicon glyphicon-ok" ng-if="PassChecker == nLogin.nPass && PassChecker != null"></i><i class="glyphicon glyphicon-remove" ng-if="PassChecker != nLogin.nPass && PassChecker != null"></i>
+                </div>
+                <div class="col-md-12">
+                    <label>Retype Password: </label>
+                    <input type="password" ng-model="PassChecker" id="nuPassCheck" name="nuPassCheck" /><i class="glyphicon glyphicon-ok" ng-if="PassChecker == nLogin.nPass && PassChecker != null"></i><i class="glyphicon glyphicon-remove" ng-if="PassChecker != nLogin.nPass && PassChecker != null"></i>
+                </div>
+                <div class="col-md-12">
+                    <label>Type of User: 
+                    <select style="width: 170px;" class="form-control" id="Type" ng-model="nLogin.nUsType" ng-change = "nTitle(nLogin.nUsType)">
+                        <option value="1">User</option>
+                        <option value="2">Artist</option>
+                        <option value="3">Programmer</option>
+                        <option value="4">Web Designer</option>
+                        <option value="5">Game Designer</option>
+                        <option value="6">Marketer</option>
+                        <option value="7">Developer</option>
+                        <option value="8">Internet Technician</option>
+                        <option value="9">Graphic Designer</option>
+                        <option value="10">Polymath</option>
+                       ng-change="schedule.Building='Central'"
+                    </select>
+                </label>
+                </div>
+                <div class="col-sm-12">
+                    <label>Chat Image: </label>
+                    
+                    <div>Select an image file: <input type="file" id="fileInput" /></div>
+                    <div class="cropArea" style="background: #E4E4E4; overflow: hidden; width:500px; height:350px;">
+                        <img-crop image="myImage" result-image="nLogin.nFile"></img-crop>
+                    </div>
+                    <!--<div>Cropped Image:</div>
+                    <div><img ng-src="{{nLogin.nFile}}" /></div>-->
+                    
+                    <!--<input type="file" name="file" accept="image/*" fileread="nLogin.nFile">--> <!--fileread="nLogin.ImageFile"-->
+                </div>
+                <div class="col-xs-12">                        
+                    <label>Bio/Experience:  {{nLogin.nBio.length}}/185</label>
+                </div>
+                    <textarea ng-model="nLogin.nBio" id="nuBio" name="nuBio" style="margin-left: 15px" maxlength="185" rows="5" cols="50"></textarea><br>
+                    <input type="submit" ng-click="createLogin(nLogin);" ng-model="nLogin.Auth" id="nLogin" value="Create Login" style="margin-top: 20px"/> {{Alert}}
+            </div>
+            <div class="col-md-6">
+                <div style="height: 450px; width: 400px; background-color: #ffffff; box-shadow:1px 2px 10px #888888;">
+                    <div style="padding-top: 30px;">
+                        <img  ng-src="{{nLogin.nFile}}" class="img-circle center-block" style="max-width:160px;"/>
+                    </div>
+                    <div style="text-align: center; padding-left:30px; padding-right:30px;">
+                        <h3 class="name" style="font-weight:bold; margin-top:28px; margin-bottom:8px; color:inherit;">{{nLogin.nUName}}</h3>
+                        <p class="title" style="text-transform:uppercase; font-weight:bold; color:#d0d0d0; letter-spacing:2px; font-size:13px;">{{Title}}</p>
+                        <p class="description" style="font-size:15px; margin-top:15px; margin-bottom:20px; color:#7d8285;">{{nLogin.nBio}}</p>
+                    </div>
+                </div>
+            </div>
+        </ng-form>
+    </div>
+</div>
+        

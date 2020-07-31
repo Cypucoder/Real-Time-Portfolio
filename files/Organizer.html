@@ -1,0 +1,55 @@
+<div class="container" style="background-color:#fff;box-shadow:1px 2px 10px #888888;">
+    <ng-form id="form_Item" name="form_Item" action="">
+        <div id="spacer" class="col-xs-12" style="margin-top: 20px;"></div>
+        <div class="col-xs-12 col-md-6">
+            <div class="row">
+                    <!--<label>Search: </label>-->
+                <input type="input" class="col-xs-12 col-sm-4 col-md-6" ng-model="fSearch" placeholder="search">
+                <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="margin-top: 20px;"></div>
+                <div class="col-xs-12 col-sm-4 col-md-6">
+                    <select id="Order" class="form-control" ng-model="Order"><!-- ng-init="EventFilt.fOrder=order"-->
+                        <option value="">--Order By--</option><!--*-->
+                        <option value="item">A-Z</option>
+                        <option value="-item">Z-A</option>
+                        <option value="-id">Newest</option>
+                        <option value="id">Oldest</option>
+                        <option value="">--None--</option><!--None-->                   
+                    </select>
+                </div>
+                <div class="col-xs-12" style="margin-top: 20px;">
+                    <label class="col-xs-12 col-sm-4 col-md-6">Max tabs at once: </label>
+                    <input type="text" class="col-xs-12 col-sm-6" ng-model="Col"/>
+                </div>
+                <div class="col-xs-12" style="margin-top: 20px;">
+                    <label class="col-xs-12 col-sm-4 col-md-6">Number of items per columns: </label>
+                    <input type="text" class="col-xs-12 col-sm-6" ng-model="NumItem"/>
+                </div>
+                <div class="col-xs-12" style="margin-top: 20px;" ng-keyup="$event.keyCode == 13 && add();">
+                    <label class="col-xs-12 col-sm-4 col-md-6">Item to be sorted: </label>
+                    <input type="text" class="col-xs-12 col-sm-6" ng-model="form_Item.inp" id="input" name="input" focus-on="newItemAdded"/>
+                    <div class="hidden-xs col-sm-4 col-md-6"></div>
+                    <input type="submit" ng-click="add();" ng-model="form_Item.send" id="form_Item" class="col-xs-12 col-sm-6 col-md-6" style="margin-top: 20px" value="Add to list" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 hidden-md hidden-lg" style="margin-top: 20px;"></div>
+        <div class="col-xs-12 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Items</h3>
+                </div>
+                <div class="panel-body">
+                    <div dir-paginate="n in array_List|filter: fSearch|orderBy: Order|itemsPerPage:NumItem">
+                        <span>{{n.item}}</span>
+                    </div>
+                </div>
+            </div>
+            <dir-pagination-controls max-size="Col" direction-links="true" boundary-links="true"></dir-pagination-controls>
+
+           <!-- <div class="row" ng-repeat="n in array_List|filter: fSearch|orderBy: Order">
+                {{n.item}}
+            </div>-->
+        </div>
+        <div id="spacer" class="col-xs-12" style="margin-top: 20px;"></div>
+    </ng-form>
+</div>

@@ -1,0 +1,238 @@
+.video-wrapper {
+  position: relative;
+  overflow: hidden;
+  /*height: 500px;*/
+  /*max-width: 480px;*/
+}
+
+video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+}
+
+/*Video controls*/
+.video-controls {
+  position: absolute;
+  width: 100%;
+  bottom: -90px; /*// height of controls container*/
+  /*left: 50%;*/
+  padding: 7px;
+  background: linear-gradient(rgba(255, 255, 255, .2), rgba(0, 0, 0, .7));
+  /*background: linear-gradient(red, yellow);*/
+  /*transform: translateX(-50%);*/
+  z-index: 3;
+  transition: bottom .25s ease-in;
+}
+
+.video-wrapper:focus > video + .video-controls,
+.video-wrapper:hover > video + .video-controls {
+  bottom: 0px;
+  z-index: 2;
+}
+
+/*Video controls*/
+.btnVid {
+  padding: 5px 0;
+  width: 31px;
+  font-size: 18px;
+  /*text-align: center;*/
+  color: #fff;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: opacity .175s ease-in;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    opacity: .25;
+  }
+}
+
+.sliderbutton {
+    width: 15px;
+    height: 15px;
+    background-color: #8CFFF6;
+    transition: width .35s linear;
+    position: relative;
+    bottom:13px;
+    left:0;
+    z-index: -1;
+    border-radius: 10px;
+}
+
+/*allows custom fullscreen*/
+video::-webkit-media-controls {
+  display:none !important;
+}
+video::-webkit-media-controls-enclosure {
+  display:none !important;
+}
+
+.progress-container:hover {
+    opacity: 1;
+}
+
+.progress-container {
+    opacity: 0.7;
+    bottom:-10px;
+}
+
+.progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: #8CFFF6;
+    transition: width .35s linear;
+    position: relative;
+    bottom:0px;
+    
+    z-index: 6;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.progress-bar::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background-color: #8CFFF6;
+    transition: width .35s linear;
+    position: relative;
+    bottom:0px;
+    
+    z-index: 6;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/*// Progress bar*/
+.progress-bar-mouse {
+  width: 0px;
+  height: 10px;
+  background-color: #ffffff;
+  transition: width .35s linear;
+  position: relative;
+  bottom:20px;
+  z-index: -4;
+  opacity: .3;
+}
+
+/*// Progress bar*/
+.progress-bar-fill {
+  width: 0px;
+  height: 10px;
+  background-color: #8CFFF6;
+  transition: width .35s linear;
+  position: relative;
+  bottom:0px;
+  z-index: -2;
+  
+}
+
+.progress-bar-back {
+  width: 100%;
+  height: 10px;
+  opacity: .7;
+  background-color: lightgrey;
+  transition: width .35s linear;
+  position: relative;
+  bottom:10px;
+  z-index: -3;
+  
+}
+
+.progress-bar {
+    
+    height: 10px;
+    z-index: 5;
+    -webkit-appearance: none;
+    /*width: 100%;
+    height: 25px;*/
+    background: rgba(0, 0, 0, .0001);
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  /*background-color: #ffffff;*/
+}
+
+.volume-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: #8CFFF6;
+    transition: width .35s linear;
+    position: relative;
+    bottom:0px;
+    
+    z-index: 6;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.volume-bar::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background-color: #8CFFF6;
+    transition: width .35s linear;
+    position: relative;
+    bottom:0px;
+    
+    z-index: 6;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.volume-bar{
+    position: relative;
+    bottom: -15px;
+    height: 4px;
+    z-index: 5;
+    -webkit-appearance: none;
+    /*width: 100%;
+    height: 25px;*/
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    background: rgba(0, 0, 0, .0001);
+}
+
+.vol-bar-back {
+  width: 100%;
+  height: 4px;
+  min-width: 50%;
+  background-color: lightgrey;
+  transition: width .35s linear;
+  position: relative;
+  bottom:-7px;
+  z-index: -3;
+  
+}
+.vol-bar-fill {
+  width: 99.6%;
+  height: 4px;
+  max-width: 99.6%;
+  background-color: #8CFFF6;
+  transition: width .35s linear;
+  position: relative;
+  bottom:-11px;
+  z-index: 1;
+  
+}
+
+.vol-fill-check:hover {
+    opacity: 1;
+}
+
+.vol-fill-check {
+    width: 50%;
+    max-width: 100px;
+    min-width: 50px;
+    opacity: .7;
+}

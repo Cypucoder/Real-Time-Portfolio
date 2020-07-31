@@ -1,0 +1,34 @@
+{
+  "name": "CypuCode",
+  "version": "0.1.4",
+  "description": "CypuCode Portfolio",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Benjamin Cuson",
+  "license": "ISC",
+  "dependencies" : {
+      "express": "~4.13.3", 
+      "socket.io": "~1.4.4",
+      "mysql": "~2.10.2",
+      "body-parser": "~1.14.2",
+      "angular-route": "~1.4.8",
+      "nodemailer": "~0.7.1",
+      "angular-ui-calendar": "~1.0.2",
+      "angular-ui-router": "~0.2.18",
+      "ng-cookies": "~1.0.2",
+      "moment":"2.19.3",
+      "forever":"0.15.2",
+      "textangular":"1.5.16",
+      "multer": "^1.1.0",
+      "angular-utils-pagination":"0.11.1",
+      "node-uuid":"1.4.7",
+      "mysql":"2.13.0",
+      "bcrypt":"1.0.2",
+      "lwip":"~0.0.9",
+      "angular-animate":"1.3.0",
+      "async":"*"
+    }
+}

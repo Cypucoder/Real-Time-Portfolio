@@ -1,0 +1,90 @@
+<div class="container" style="background-color:#fff;box-shadow:1px 2px 10px #888888;">
+    <div id="spacer" class="col-xs-12" style="margin-top: 20px;"></div>
+    <div class="col-xs-12">
+        <div ng-repeat="x in x">
+            <ng-form ng-model="nLogin" action="" novalidate>
+                <div class="col-xs-12 col-md-6">
+                    <div class="panel panel-default col-xs-12" style="height: 400px;overflow:hidden; padding:1px;">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{x.RoomName}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="Left" class="col-xs-9 hidden-xs" style=" height: expression( this.scrollHeight > 301 ? '302px' : 'auto' ); max-height: 302px; overflow-y:auto;" scroll-glue><!--overflow-y: scroll;max-height: 302px;-->
+                                <div ng-repeat="i in x.RoomMessage">
+                                    <div id="ChatLog" class="col-xs-12"><hr style="margin-bottom:3px;margin-top: 3px;">{{i.User}}: {{i.Message}}</div>
+                                </div>
+                            </div>
+                            <div id="Right" class="col-xs-3 hidden-xs" style=" height: expression( this.scrollHeight > 301 ? '302px' : 'auto' ); max-height: 302px; overflow-y:auto;">
+                                <div ng-repeat="i in x.Users">
+                                    <div id="UserList">{{i.Name}}</div>
+                                </div>
+                            </div>
+                            <div id="Left2" class="col-xs-9 hidden-sm hidden-md hidden-lg" style=" height: expression( this.scrollHeight > 261 ? '262px' : 'auto' ); max-height: 262px; overflow-y:auto;" scroll-glue><!--overflow-y: scroll;max-height: 262px;-->
+                                <div ng-repeat="i in x.RoomMessage">
+                                    <div id="ChatLog" class="col-xs-12"><hr style="margin-bottom:3px;margin-top: 3px;">{{i.User}}: {{i.Message}}</div>
+                                </div>
+                            </div>
+                            <div id="Right2" class="col-xs-3 hidden-sm hidden-md hidden-lg" style=" height: expression( this.scrollHeight > 261 ? '262px' : 'auto' ); max-height: 302px; overflow-y:auto;">
+                                <div ng-repeat="i in x.Users">
+                                    <div id="UserList">{{i.Name}}</div>
+                                </div>
+                            </div>
+                            <div id="Bottom" class="col-xs-12" style="position: absolute; bottom: 0; background-color:#DDDDDD;padding:10px;margin-left:-16px;">
+                                <div ng-if="x.Logged">
+                                    <input class="col-xs-12 col-sm-8" type="text" style="border:none;height: 25px;" ng-model="nLogin.Message" ng-keyup="$event.keyCode == 13 && [sMessage(nLogin.Message, x.RoomName), nLogin.Message='']">
+                                    <button class="col-xs-12 col-sm-4" style=" border: none; height: 25px; background-color:#F5F5F5" ng-click="sMessage(nLogin.Message, x.RoomName);nLogin.Message=''">Send</button>
+                                </div>
+                                <div ng-if="!x.Logged">
+                                    <div ng-if="!Logged">
+                                        <div class="col-xs-12">{{Taken2}}</div>
+                                        <input class="col-xs-12 col-sm-8" type="text" style="border:none;height: 25px;" ng-model="nLogin.sNickname" Placeholder="Please enter a nickname:"  ng-keyup="$event.keyCode == 13 && sNickname(nLogin.sNickname, x.RoomName);">
+                                        <button class="col-xs-12 col-sm-4" style=" border: none; height: 25px; background-color:#F5F5F5" ng-click="sNickname(nLogin.sNickname, x.RoomName);">Enter Room</button>
+                                    </div>
+                                    <div ng-if="Logged">
+                                        <button class="col-xs-12" style=" border: none; height: 25px; background-color:#F5F5F5" ng-click="sNickname('Clear', x.RoomName);">Enter Room</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-form>
+        </div>
+        
+        <div id="Room_Personal" class="col-xs-12 col-md-6">
+            <div class="panel panel-default col-xs-12" style="height: 400px;overflow:hidden; padding:1px;">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Create a new Room:</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="col-xs-12">
+                        <ng-form ng-model="nNewChat" action="" novalidate>
+                            <table style="border-collapse: separate; border-spacing: 0 1em;">
+                                <tr>
+                                    <td>Room Name: </td>
+                                    <td><input class="col-xs-12" ng-model="nNewChat.rName" type="text"> {{Taken}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Room Password: </td>
+                                    <td><input class="col-xs-12" ng-model="nNewChat.rPassword" type="text"></td>
+                                </tr>
+                                <tr ng-if="!Logged">
+                                    <td>Admin Name: </td>
+                                    <td><input class="col-xs-12" ng-model="nNewChat.uName" type="text"></td>
+                                </tr>
+                                <tr>
+                                    <td>Login Message: </td>
+                                    <td><input class="col-xs-12" ng-model="nNewChat.lMessage" type="text"></td>
+                                </tr><tr>
+                                    <td><button style=" border: none; height: 25px; background-color:#F5F5F5" ng-click="sCreate(nNewChat);nNewChat='';">Create</button></td>
+                                    <td><button style=" border: none; height: 25px; background-color:#F5F5F5" ng-click="Login_Chat(nNewChat);nNewChat='';">Login</button></td>
+                                </tr>
+                            </table>
+                        </ng-form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="spacer" class="col-xs-12" style="margin-top: 20px;"></div>
+</div>

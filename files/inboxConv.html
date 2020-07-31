@@ -1,0 +1,39 @@
+<div style="margin-top: 50px;"></div>
+
+<div class="container" style="background-color:#fff;box-shadow:1px 2px 10px #888888;">
+    <table class="table">
+        <tr id="Author">
+            <td>
+                <div class="col-xs-12" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="col-xs-3" style="max-width: 200px;">
+                        <img ng-src="./assets/img/User/{{data.v_Author}}.jpg" class="img-circle col-xs-12" style="max-width:100px; min-width:75px;"/>
+                        <div class="col-xs-7" style="text-align: center;">{{data.v_Author}}</div>
+                    </div>
+                    <div class="col-xs-7 col-xs-offset-2 col-sm-9 col-sm-offset-0">{{data.v_Message}}</div>
+                </div>
+            </td>
+        </tr>
+        <tr ng-repeat="x in x">
+            <td>
+                <div class="col-xs-12" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="col-xs-3" style="max-width: 200px;" ng-if="x.v_Author == Logged">
+                        <img ng-src="./assets/img/User/{{x.v_Author}}.jpg" class="img-circle col-xs-12" style="max-width:100px; min-width:75px;"/>
+                        <div class="col-xs-7" style="text-align: center;">{{x.v_Author}}</div>
+                    </div>
+                    <div class="col-xs-7 col-xs-offset-2 col-sm-9 col-sm-offset-0">{{x.v_Message}}</div>
+                    <div class="col-xs-3" style="max-width: 200px;" ng-if="x.v_Author != Logged">
+                        <img ng-src="./assets/img/User/{{x.v_Author}}.jpg" class="img-circle col-xs-12" style="max-width:100px; min-width:75px;"/>
+                        <div class="col-xs-7" style="text-align: center;">{{x.v_Author}}</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="container">
+    <ng-form id="nComment" name="nComment" action="" ng-keyup="$event.keyCode == 13 && addComment(nComment);" novalidate>
+        <textarea style="resize: none;" ng-model="nComment.Comment"></textarea>
+        <input type="submit" ng-click="addComment(nComment);" ng-model="nComment.Subm" id="nLogin" value="Add Comment"/> {{news_error}}
+    </ng-form>
+</div>
+<div style="margin-bottom: 200px;"></div>

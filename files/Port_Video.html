@@ -1,0 +1,68 @@
+<div class="container" style="background-color:#fff;box-shadow:1px 2px 10px #888888;">
+    <div id="spacer" class="col-xs-12" style="margin-top: 20px;"></div>
+    <h1>Video demo</h1> 
+    <ng-form id="form_Item" name="form_Item" action="">
+       <!-- <div class="col-md-12">
+            <video id="videoPlayer" class="col-xs-12" preload="metadata" controls>
+                <source src="https://cypucode.ngrok.io/video" type="video/mp4">
+                <track src="chrome-subtitles-en.vtt" label="English captions" kind="captions" srclang="en" default>
+                <p>Browser not supported</p>
+            </video>
+        </div>-->
+    </ng-form>
+    <!--<div class="video_background col-xs-12">
+        <span class="video_play">Play</span>
+        <span class="video_volUp">VolUp</span>
+        <span class="video_volDown">VolDown</span>
+        <span class="video_ForThirty">For30</span>
+        <span class="video_BackThirty">Back30</span>
+        <span class="video_Next">Next</span>
+        <span class="video_Last">Last</span>
+        <span class="video_fullScreen">Fullscreen</span>
+        <span class="video_fullScreen">Download</span>
+    </div>-->
+    <div class="col-xs-12">
+        <div class="video-wrapper">
+            <video class="video-element" poster="{{Poster}}" preload="metadata">
+                <source ng-src="{{Serv}}" type="video/mp4">
+                <!--<track src="chrome-subtitles-en.vtt" label="English captions" kind="captions" srclang="en" default>-->
+                <p>Browser not supported</p>
+            </video>
+
+
+            <div class="video-controls">
+                <div id="prog_Cont" class="col-xs-12 progress-container">
+                    <input class="progress-bar" type="range" min="0" max="100" step=".1" value="0">
+                    <div class="progress-bar-fill"></div>
+                    <div class="progress-bar-back"></div>
+                    <div class="progress-bar-mouse"></div>
+                    <!--<div class="progress-bar-fill"></div>-->
+                    <!--<div class="sliderbutton"></div>-->
+                </div>
+                <div class="col-xs-12" style="margin-top:5px;">
+                    <button class="btnVid col-xs-1"><span class="fa fa-step-backward" ng-click="Back()"></span></button>
+                    <button class="btnVid btn-backward col-xs-1"><span class="fa fa-backward"></span></button>
+                    <button class="btnVid btn-play col-xs-1"><span class="fa fa-play"></span></button>
+                    <button class="btnVid btn-forward col-xs-1"><span class="fa fa-forward"></span></button>
+                    <button class="btnVid btn-forward col-xs-1" ng-click="Next()"><span class="fa fa-step-forward"></span></button>
+                    <!--<button class="btnVid btn-stop col-xs-1"><span class="fa fa-stop"></span></button>-->
+                    <!--<button class="btnVid btn-reset col-xs-1"><span class="fa fa-undo"></span></button>-->
+                    <button class="btnVid btn-mute col-xs-1"><span class="fa fa-volume-up"></span></button>
+                    <div class="col-xs-3">
+                        <div class="vol-fill-check">
+                            <input class="volume-bar" type="range" min="0" max="100" step=".1" value="100">
+                            <div class="vol-bar-fill"></div>
+                            <div class="vol-bar-back"></div>
+                        </div>
+                    </div>
+                    <button class="btnVid btn-expand col-xs-1 pull-right"><span class="fa fa-expand"></span></button>
+                </div>
+            </div>    
+        </div>
+    </div>
+    <div id="spacer" class="col-xs-12" style="margin-top: 20px;"></div>
+</div>
+<!--caption-->
+<!--https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content-->
+<!--https://developers.google.com/web/fundamentals/media/video-->
+<!--https://blog.alexdevero.com/build-custom-html5-video-player/-->

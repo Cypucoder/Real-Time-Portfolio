@@ -1,0 +1,42 @@
+<div class="container" style="background-color:#fff;box-shadow:1px 2px 10px #888888;margin-bottom: 20px;">
+        <div class="page-header">
+            <h1>Gallery </h1>
+            <p class="text-center hidden-xs">A compilation of various styles and genres of artwork done using Alchemy, Mypaint, Krita and other tools.</p>
+        </div>
+    
+    <div class="projects-clean">
+            <div class="intro"></div>
+            <div class="row projects">
+                <div class="col-lg-4 col-sm-6 item"><!--<img class="img-responsive" src="{{x.Img.Graphic}}">-->
+                    <div style="background-image:url('{{x.Img.Graphic}}'); background-size: contain; background-position:center;background-attachment: fixed; background-repeat: no-repeat; height: 200px;"></div>
+                    <h3 class="name">Graphic Design</h3>
+                    <p class="description">Professional work done for companies, bands, and individuals. Cover art, logos, and more!</p><div ng-if="x.Link.Graphic == '1'"><a href="#/GalleryList/Graphic Design">View Examples...</a></div>
+                </div>
+                <div class="col-lg-4 col-sm-6 item"><!--<img class="img-responsive" src="{{x.Img.Digital}}">-->
+                    <div style="background-image:url('{{x.Img.Digital}}'); background-size: contain; background-position:center;background-attachment: fixed; background-repeat: no-repeat; height: 200px;"></div>
+                    <h3 class="name">Digital </h3>
+                    <p class="description">A more traditional approach to digital art. By combining the realistic brush types of Krita and Mypaint with Gimp and Photoshop, more traditional styles of digital art can be created.</p><div ng-if="x.Link.Digital == '1'"><a href="#/GalleryList/Digital">View Examples...</a></div>
+                </div>
+                <div class="col-lg-4 col-sm-6 item"><!--<img class="img-responsive" src="{{x.Img.Chaos}}">-->
+                    <div style="background-image:url('{{x.Img.Chaos}}'); background-size: contain; background-position:center;background-attachment: fixed; background-repeat: no-repeat; height: 200px;"></div>
+                    <h3 class="name">Chaos Generation</h3>
+                    <p class="description">Artwork created via Chaos Generation starts with a base set of shapes created in Alchemy. This makes an inkblot that can be expanded upon into something unique.</p><div ng-if="x.Link.Chaos == '1'"><a href="#/GalleryList/Chaos Gen">View Examples...</a></div>
+                </div>
+                <div class="col-lg-4 col-sm-6 item"><!--<img class="img-responsive" src="{{x.Img.Spacial}}">-->
+                    <div style="background-image:url('{{x.Img.Spacial}}'); background-size: contain; background-position:center;background-attachment: fixed; background-repeat: no-repeat; height: 200px;"></div>
+                    <h3 class="name">Spacial Generation</h3>
+                    <p class="description">Spacial Generation is the inverse to Chaos generation. While still starting with shapes, negative space is heavily used to create the scene or characters.</p><div ng-if="x.Link.Spacial == '1'"><a href="#/GalleryList/Spacial Gen">View Examples...</a></div>
+                </div>
+                <div class="col-lg-4 col-sm-6 item"><!--<img class="img-responsive" src="{{x.Img.ThreeD}}">-->
+                    <div style="background-image:url('{{x.Img.ThreeD}}'); background-size: contain; background-position:center;background-attachment: fixed; background-repeat: no-repeat; height: 200px;"></div>
+                    <h3 class="name">3D </h3>
+                    <p class="description">3D scenes, objects, and characters created and textured using Blender3d, Substance Designer, Substance Painter, and other tools. Final Renders created in Blender and UE4.</p><div ng-if="x.Link.ThreeD == '1'"><a href="#/GalleryList/3D">View Examples...</a></div>
+                </div>
+                <div class="col-lg-4 col-sm-6 item"><!--<img class="img-responsive" src="{{x.Img.Sketches}}">-->
+                    <div style="background-image:url('{{x.Img.Sketches}}'); background-size: contain; background-position:center;background-attachment: fixed; background-repeat: no-repeat; height: 200px;"></div>
+                    <h3 class="name">Sketches and Previews</h3>
+                    <p class="description">Sketches and Previews of upcoming projects and images. Some may be working toward finished projects, others are simply doodles.</p><div ng-if="x.Link.Sketches == '1'"><a href="#/GalleryList/Sketches">View Examples...</a></div>
+                </div>
+            </div>
+    </div>
+</div>

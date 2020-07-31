@@ -1,0 +1,135 @@
+<div style="margin-top: 50px;"></div>
+
+<div class="container" style="box-shadow:1px 2px 10px #888888; background-color:#fff;">
+    <a ng-href="{{data.v_Image}}" style="width: 100%"><div style="background-image:url('{{data.v_Image}}'); background-size: cover; background-position:center;background-attachment: fixed; background-repeat: no-repeat; height: 400px;"></div></a>
+    <!--<div style="background:url('./assets/img/News/asdf.jpg'); background-position: center; background-size: cover;height: 400px;"></div>-->
+    <div ng-if="circle==true"><img src="./assets/img/News/asdf.jpg"></div>
+    <div class="page-header">
+        <h1>{{data.v_Title}}</h1>
+        <span ng-repeat="tags in tags">
+            <span class="badge">{{tags}}</span>
+        </span>
+        <h3>by {{data.v_Author}}</h3>
+        <div style="float: left;"><a ng-if="Login != 'Login'  && q.resu == 0" ng-click="setMessage(); save_Article(); resetButton();" class="glyphicon glyphicon-bookmark"></a><a ng-if="Login != 'Login' && q.resu == 1" ng-click="setMessage(); delete_Article(); resetButton();" class="glyphicon glyphicon-remove"></a><a ng-if="Login == 'Login'" data-toggle="modal" data-target="#Login" class="glyphicon glyphicon-bookmark"></a><!--<a href="" class="fa fa-facebook-official"></a><a href="" class="fa fa-twitter"></a>--></div>
+        
+        
+        <!--<div ta-bind ng-model="Link"></div>-->
+        <!--<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fcypucode.ngrok.io%2F%23%2FNewsBlog%2F14&layout=button&size=small&mobile_iframe=true&width=59&height=20&appId" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>-->
+        <div style="margin: 0px 5px;float:left">
+            <span class=""
+                      socialshare
+                      socialshare-provider="facebook"
+                      socialshare-type="share"
+                      socialshare-description="your description goes here"
+                      socialshare-via="145634995501895"
+                      socialshare-media="{{data.v_Image}}"
+                      socialshare-quote="{{data.v_Title}}"
+                      socialshare-hashtags="#Cypu"
+                      socialshare-display = "popup"
+                      socialshare-title="CypuCode {{data.v_Title}}"
+                      socialshare-caption="Cypu Caption"
+                      socialshare-url="https://cypucode.ngrok.io/#/NewsBlog/{{Idtract}}"
+                      socialshare-popup-height="500"
+                      socialshare-popup-width="500"
+                      socialshare-trigger="click">
+                  <i class="fa fa-facebook-square" style="font-size:18px; color: #3B5998"></i>
+              </span>
+        </div>
+        
+        <div style="margin-right: 5px;float:left">
+            <span class=""
+                  socialshare
+                  socialshare-provider="twitter"
+                  socialshare-text="your description goes here"
+                  socialshare-hashtags="Cypu, Other"
+                  socialshare-url="https://cypucode.ngrok.io/#/NewsBlog/{{Idtract}}">
+                  <i class="fa fa-twitter-square" style="font-size:18px; color: #1DA1F2"></i>
+              </span>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div ta-bind ng-model="data.v_Article"></div>
+</div>
+<div class="container" style="background-color:#fff;box-shadow:1px 2px 10px #888888;margin-top:10px;">
+    <div class="page-header">
+            <h3>Comments</h3>
+    </div>
+    <ng-form id="nComment" name="nComment" action="" novalidate>
+        <textarea style="resize: none;" ng-model="nComment.Comment" ng-change="v_Reply = 0; v_OrigComm = 0"></textarea>
+        <input type="submit" ng-click="addComment(nComment);" ng-model="nComment.Subm" id="nLogin" value="Add Comment"/> {{news_error}}
+    </ng-form>
+    
+    <table class="table">
+        <tr ng-repeat="x in x | filter: {v_Reply: '0'}">
+            <td>
+                <div class="col-xs-12" style="margin-top: 10px; margin-bottom: 10px;">
+                    <div class="col-xs-12 col-sm-3" style="max-width: 200px;">
+                        <img ng-src="./assets/img/User/{{x.v_UserName}}.jpg" class="img-circle col-xs-12" style="max-width:100px; min-width:75px;" ng-click="Card(x.v_UserName)"/>
+                        <div class="col-xs-7" style="text-align: center;">{{x.v_UserName}}</div>
+                        <div class="col-xs-12" >
+                            <div ng-repeat="Likes in Likes|filter:{v_isLiked: '1'}|filter: {v_idMessage: x.v_idMessage} as LengOne">
+                                <!--{{Likes.v_UserName}} {{x.v_idMessage}} {{Likes.v_isLiked}} {{LengOne.length}}-->
+                            </div>
+                            <div ng-repeat="Likes in Likes|filter:{v_isLiked: '2'}|filter: {v_idMessage: x.v_idMessage} as LengTwo">
+                            </div>
+                            <table>
+                                <tr>
+                                    <td><a href="" ng-click="isLiked('+',x.v_idMessage);"><span class="glyphicon glyphicon-menu-up"></span></a></td>
+                                    <td><div style="margin: 0px 10px">{{LengOne.length - LengTwo.length}}</div></td>
+                                    <td><a href="" ng-click="isLiked('-',x.v_idMessage);"><span class="glyphicon glyphicon-menu-down"></span></a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="hidden-sm hidden-md hidden-lg class-xs-12" style="margin-top: 120px;"></div>
+                    <div class="col-xs-12 col-xs-offset-2 col-sm-9 col-sm-offset-0" bind-html-compile="x.v_Message"></div>
+                </div>
+                <div class="col-xs-10 col-sm-offset-2" ng-repeat="s in s | filter: {v_Reply: '1'} | filter: {v_OrigComm: x.v_idMessage}" style="background:#EEF7F6; margin-top:10px;">
+                    <div class="col-xs-3" style="max-width: 100px;margin:10px 0px;">
+                        <img ng-src="./assets/img/User/{{s.v_UserName}}.jpg" class="img-circle col-xs-12" style="max-width:100px; min-width:75px;" ng-click="Card(s.v_UserName)"/>
+                        <div class="col-xs-7" style="text-align: center;">{{s.v_UserName}}</div>
+                    </div>
+                    <div class="hidden-xs col-sm-7 col-sm-offset-2 col-sm-9 col-sm-offset-0" style="margin:10px 0px;" bind-html-compile="s.v_Message"><!--{{s.v_Message}}--></div>
+                    <div class="col-xs-12" style="margin:10px 0px">
+                        <div ng-repeat="Likes in Likes|filter:{v_isLiked: '1'}|filter: {v_idMessage: s.v_idMessage} as LengOne">
+                                <!--{{Likes.v_UserName}} {{x.v_idMessage}} {{Likes.v_isLiked}} {{LengOne.length}}-->
+                            </div>
+                        <div ng-repeat="Likes in Likes|filter:{v_isLiked: '2'}|filter: {v_idMessage: s.v_idMessage} as LengTwo">
+                        </div>
+                        <table>
+                            <tr>
+                                <td><a href="" ng-click="isLiked('+',s.v_idMessage);"><span class="glyphicon glyphicon-menu-up"></span></a></td>
+                                <td><div style="margin: 0px 10px">{{LengOne.length - LengTwo.length}}</div></td>
+                                <td><a href="" ng-click="isLiked('-',s.v_idMessage);"><span class="glyphicon glyphicon-menu-down"></span></a></td>
+                                <td><a href="" data-target="#{{s.v_idMessage}}Spec"  data-toggle="collapse" style="margin-left: 10px;">Reply <div class="glyphicon glyphicon-chevron-down"></div></a></td>
+                            </tr>
+                        </table>
+                        
+                        
+                        
+                        <div id="{{s.v_idMessage}}Spec" class="collapse">
+                            <ng-form id="nComment" name="nComment" action="" novalidate>
+                                <textarea style="resize: none;" ng-model="nComment.Comment" ng-change="nComment.v_Reply = 1; nComment.v_OrigComm = {{x.v_idMessage}}" ng-init='nComment.Comment="@"+s.v_UserName'></textarea>
+                                <input type="submit" ng-click="addComment(nComment); nComment.Comment = null" ng-model="nComment.Subm" id="nLogin" value="Reply"/> {{news_error}}
+                            </ng-form>
+                        </div>
+                    </div>
+                    <div class="hidden-sm hidden-md hidden-lg col-xs-12" style="margin:10px 0px;" bind-html-compile="s.v_Message"><!--{{s.v_Message}}--></div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-11" style="margin: 10px 0px">
+                        <a href="" data-target="#{{x.v_idMessage}}Lead"  data-toggle="collapse">Reply <div class="glyphicon glyphicon-chevron-down"></div></a>
+                        <div id="{{x.v_idMessage}}Lead" class="collapse">
+                            <ng-form id="nComment" name="nComment" action="" novalidate>
+                                <textarea style="resize: none; margin: 10px 0px;" ng-model="nComment.Comment" ng-change="nComment.v_Reply = 1; nComment.v_OrigComm = {{x.v_idMessage}}"></textarea>
+                                <input type="submit" ng-click="addComment(nComment); nComment.Comment = null" ng-model="nComment.Subm" id="nLogin" value="Reply"/> {{news_error}}
+                            </ng-form>
+                        </div>
+                    </div>
+                </div>
+                
+            </td>
+        </tr>
+    </table>
+</div>

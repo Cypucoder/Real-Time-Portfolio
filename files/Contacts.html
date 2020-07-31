@@ -1,0 +1,30 @@
+<div class="container" style="background-color:#fff;box-shadow:1px 2px 10px #888888;">
+    <div class="page-header">
+        <h1>{{lHeader}} <small ng-if="lHeader == 'News'">and other interesting things</small></h1><input type="input" ng-model="fSearch" placeholder="search"> {{results.length}} results found
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <tr ng-repeat="x in x|filter: fSearch as results">
+                <td style="margin-left:0px; padding-left:0px; margin-right:0px; padding-right:0px">
+                    <div class="col-lg-12 col-md-12" style="box-shadow:1px 2px 10px #888888;background-color:#fff;">
+                        <div class="media">
+                            <div class="media-left">
+                                <a><img ng-src="./assets/img/User/{{x.v_Author}}.jpg" style="max-height: 75px"></a>
+                            </div>
+                            <div class="media-body">
+                                <!--<h4 class="col-xs-11">{{x.v_Title}}</h4>-->
+                                <div class="text-right">
+                                    <a ng-if="showDelete" ng-click="remove_Inbox(x.v_idMessage); resetButton();" class="glyphicon glyphicon-remove"></a>
+                                </div>
+                                <p class="col-xs-12">{{x.v_Message|PlainRes|words:30}} <a href="" ng-click="InboxConv(x.v_Link, x.v_idMessage);">...Read More</a><!--<p class="col-xs-12">{{x.v_Message|PlainRes|words:30}} <a href="{{x.v_Link}}">...Read More</a>--></p>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
