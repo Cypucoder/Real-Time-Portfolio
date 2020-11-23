@@ -1,4 +1,4 @@
-# Real Time Portfolio
+# Socket/Streaming Demo
 
 A demonstration of optimized real time examples.
 
